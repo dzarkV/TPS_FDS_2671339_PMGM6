@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Sistema de inventario MGM</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="shortcut icon" href="favicon.ico">
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="css/icomoon.css">
+<!-- Simple Line Icons -->
+<link rel="stylesheet" href="css/simple-line-icons.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="css/magnific-popup.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="css/bootstrap.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<link rel="stylesheet" id="theme-switch" href="css/style.css">
+
+	
+
+</head>
+<body onload="listarUsuarios()">
+<!-- Cabezote de la pagina Estados de usuario -->
+	<header id="estilo-header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<a href="#" class="js-estilo-nav-toggle estilo-nav-toggle" ><i></i></a>
+					<a class="navbar-brand" href="index.html">MGM</a> 
+				</div>
+				<!-- Menu de seleccion -->
+				<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li style="margin: 0px 16px">
+						<select class="form-select form-select-lg mb-3" id="funcionUsuario" onchange="navegar()">
+							<option selected> Ajustes usuario</option>
+							<option value="1">cerrar sesión</option>
+							<option value="2">actualizar usuario</option>
+							<option value="3">consultar usuario</option>
+							<option value="4">estado de usuario</option>
+							<option value="5">eliminar usuario</option>
+							<option value="6">crear usuario</option>
+						</select>
+					</li>
+					<li style="color:#fff"><span  id="nombreUsuario">N/A</span><br> <span id="rolUsuario">N/A</span></li>
+				</ul>
+				</div>
+			</nav>
+	  </div>
+	</header>
+
+	<!-- Imagen de fondo de pantalla y con filtro azul -->
+	<section id="estilo-home" style="background-image: url(images/fondo_papeleria.jpg); height: 200px;" data-stellar-background-ratio="0.5">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="text-wrap">
+			</div>
+		</div>
+		<div class="slant"></div>
+	</section>
+	
+	<!-- Para realizar los filtros -->
+<form id="usuario-form" method="get">
+	<p>
+	  Buscar nombre del usuario: 
+	  <input type="text" name="busquedaUsuario" placeholder="Buscar" onchange="this.value.trim().length == 0 && listarUsuarios()">
+	  <button type="button" onclick="buscarUsuario()">Buscar</button> <!-- al dar click va al metodo indicado -->
+	</p>
+	
+</form>
+
+<!-- HTML que pinta las tablas (comienzo) -->
+<section id="estilo-contact" >
+	<div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+		<table class="table table-bordered table-striped">
+		  <thead>
+			<tr>
+			  <th>Nombre</th>
+			  <th>Apellido</th>
+			  <th>Fecha registro</th>
+			</th>	
+			</tr>
+		  </thead>
+		  <tbody id="data">
+		  </tbody>
+		</table>
+	  </div>
+</section>
+
+<script src="./js/service-listing.js"></script>
+<script src="./js/script.js"></script>
+</body>
+
+</html>
+<!-- (fin) -->

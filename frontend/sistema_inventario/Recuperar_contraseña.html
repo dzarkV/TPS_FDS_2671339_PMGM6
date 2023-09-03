@@ -27,12 +27,12 @@
 
 				<h2>Iniciar Sesion</h2>
 	  
-				<form class="box" method="post">
-					<input type="text" placeholder="Usuario" required>
-					<input type="password" placeholder="Nueva contraseña" required>
-					<input type="password" placeholder="Confirmar nueva contraseña" required>
+				<form id="recuperarPasswordForm" class="box" method="post">
+					<input type="text" name="username" placeholder="Usuario" required>
+					<input type="password" name="pass" placeholder="Nueva contraseña" required>
+					<input type="password" name="confirmPass" placeholder="Confirmar nueva contraseña" required>
 					<div class="button-block">
-						<button type="submit" class="button button-block"><a style="color:#fff; text-decoration:none" href="index.html">Cambiar contraseña</a></button>
+						<button type="button" class="button button-block" onclick="recuperarPassword()" >Cambiar contraseña</button>
 
 							<span class="pass-recovery"><a href="login.html">cancelar</a></span>
 					</div>
@@ -44,5 +44,6 @@
 	  </div>
 	</section>
 
+	<script src="./js/service-user.js"></script>
 	</body>
 </html>

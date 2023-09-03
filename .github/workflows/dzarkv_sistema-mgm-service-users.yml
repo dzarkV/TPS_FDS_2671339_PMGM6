@@ -25,14 +25,17 @@ jobs:
       - name: Create and start virtual environment
         working-directory: ./backend/users-module 
         run: |
-          python -m venv venv
+          make buildenv
           source venv/bin/activate
       
       - name: Install dependencies
         working-directory: ./backend/users-module
-        run: pip install -r requirements.txt
+        run: make installlibs
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      # - name: Tests with Pytest
+      #   working-directory: ./backend/users-module
+      #   run: make testapp
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
