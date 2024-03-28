@@ -14,4 +14,8 @@ public interface ProveedoresService {
 	
 	public ProveedoresEntity save(ProveedoresEntity producto);
 	
+	void eliminarProveedor(Integer idProveedor);
+	
+	boolean actualizarProveedor(Integer id, ProveedoresEntity proveedor);
+	
 }

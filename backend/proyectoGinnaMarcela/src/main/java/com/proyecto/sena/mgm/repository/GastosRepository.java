@@ -17,6 +17,8 @@ public interface GastosRepository extends JpaRepository<GastosEntity, Integer>{
 			nativeQuery = true)
 	List<GastosEntity> findByTipoDeGasto(@Param("tipoDeGasto") String tipoGasto);
 	
+	void deleteById(Integer idGasto);
+	
 //	@Query(value = "select * from ventas where valor_gasto like %:valorDelGasto% and id_gasto = :id", 
 //			nativeQuery = true)
 //	List<GastosEntity> findByValorGastoAndIdGasto(@Param("valorDelGasto") String nombreProducto, @Param("id") Integer idProducto);

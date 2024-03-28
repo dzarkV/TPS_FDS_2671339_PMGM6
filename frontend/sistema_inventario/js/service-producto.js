@@ -1,24 +1,82 @@
 function listarProductos() {
-
   var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/productos/listado";
-
 
   // Consumir el endpoint o la url de java
   fetch(url)
-       .then(response => response.json())
-       .then(datos => mostrarData(datos))
-       .catch(error => console.log(error))
-
+    .then(response => response.json())
+    .then(datos => mostrarData(datos))
+    .catch(error => console.log(error))
 
   // Metodo que pinta los datos
   const mostrarData = (data) => {
     console.log(data)
     let body = ""
     for (var i = 0; i < data.length; i++) {
+<<<<<<< HEAD
+      body += `<tr>
+      <td>${data[i].idProducto}</td>
+      <td>${data[i].nombreProducto}</td>
+      <td>${data[i].precioProducto}</td>
+      <td>${data[i].descripcionProducto}</td>
+      </tr>`
+=======
       body += `<tr><td>${data[i].idProducto}</td><td>${data[i].nombreProducto}</td><td>${data[i].descripcionProducto}</td></tr>`
+>>>>>>> 85c5be4850627127af0537cc7f8791563d894015
     }
     document.getElementById('data').innerHTML = body
     //console.log(body)
+  }
+}
+
+function listarProductosEliminar() {
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/productos/listado";
+
+  // Consumir el endpoint o la url de java
+  fetch(url)
+    .then(response => response.json())
+    .then(datos => mostrarData(datos))
+    .catch(error => console.log(error))
+
+  // Metodo que pinta los datos
+  const mostrarData = (data) => {
+    let body = "";
+    for (var i = 0; i < data.length; i++) {
+      body += `<tr>
+                      <td>${data[i].idProducto}</td>
+                      <td>${data[i].nombreProducto}</td>
+                      <td>${data[i].precioProducto}</td>
+                      <td>${data[i].descripcionProducto}</td>
+                      <td><button class="eliminar-btn btn btn-danger" data-id="${data[i].idProducto}" onclick="eliminarProducto(${data[i].idProducto})">Eliminar</button></td>
+                  </tr>`;
+    }
+    document.getElementById('data').innerHTML = body;
+  }
+  console.log(mostrarData)
+
+}
+
+function listarProductosActualizar() {
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/productos/listado";
+
+  // Consumir el endpoint o la url de java
+  fetch(url)
+    .then(response => response.json())
+    .then(datos => mostrarData(datos))
+    .catch(error => console.log(error))
+
+  // Metodo que pinta los datos
+  const mostrarData = (data) => {
+    let body = "";
+    for (var i = 0; i < data.length; i++) {
+      body += `<tr>
+                      <td>${data[i].idProducto}</td>
+                      <td>${data[i].nombreProducto}</td>
+                      <td>${data[i].precioProducto}</td>
+                      <td>${data[i].descripcionProducto}</td>
+                      <td><button class="btn btn-info" data-id="${data[i].idProducto}" onclick="abrirFormulario(${data[i].idProducto})">Actualizar</button></td>
+                  </tr>`;
+    }
+    document.getElementById('data').innerHTML = body;
   }
 }
 
@@ -93,12 +151,79 @@ function crearProducto() {
     .then(response => response.json()) // Analizar la respuesta JSON
     .then(data => {
       alert('Se a guardado el producto ' + data.nombreProducto + ' con el ID: ' + data.idProducto);
+      window.location.href = 'buscar_productos.html';
     }).catch(error => {
       alert('Hubo un error:', error);
     });
 
 }
 
+<<<<<<< HEAD
+function eliminarProducto(idProducto) {
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/productos/listado/";
+
+  fetch(url + idProducto, {
+    method: "DELETE"
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert('Producto eliminado exitosamente');
+        location.reload();
+      } else {
+        alert('No se pudo eliminar el producto');
+      }
+    })
+    .catch(function (error) {
+      console.error('Error al eliminar el producto:', error);
+      alert('Error al eliminar el producto');
+    });
+}
+
+function actualizarProducto() {
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/productos/";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const idProducto = urlParams.get('id');
+  console.log('hola este es el id', idProducto)
+  console.log('hola esta es la url:', url + idProducto)
+
+  var categoria = document.getElementById('categoria').value;
+  var nombre = document.getElementById('nombre').value;
+  var precio = document.getElementById('precio').value;
+  var descripcion = document.getElementById('descripcion').value;
+
+  const dataProducto = {
+    idCategoria: {
+      idCategoria: categoria
+    },
+    nombreProducto: nombre,
+    precioProducto: precio,
+    descripcionProducto: descripcion
+  };
+
+  fetch(url + idProducto, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dataProducto)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al actualizar el producto');
+      }
+      alert('Producto actualizado con exito');
+
+      window.location.href = 'actualizar_producto.html';
+    })
+    .catch(error => {
+      alert('Error al actualizar el producto: ' + error.message);
+    });
+}
+
+function abrirFormulario(idProducto) {
+  window.open('actualizar_producto_formulario.html?id=' + idProducto, '_blank');
+=======
 function listarCategorias() {
   var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/categoria/listado";
   // Consumir el endpoint o la url de java
@@ -114,4 +239,5 @@ function listarCategorias() {
     }
     document.getElementById('categorias').innerHTML = options
   }
+>>>>>>> 85c5be4850627127af0537cc7f8791563d894015
 }

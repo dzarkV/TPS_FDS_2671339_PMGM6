@@ -1,12 +1,11 @@
 package com.proyecto.sena.mgm.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.sena.mgm.entity.ProductosEntity;
 import com.proyecto.sena.mgm.entity.ProveedoresEntity;
 import com.proyecto.sena.mgm.repository.ProveedoresRepository;
 import com.proyecto.sena.mgm.service.ProveedoresService;
@@ -32,9 +31,25 @@ public class ProveedoresServiceImpl implements ProveedoresService {
 	public ProveedoresEntity save(ProveedoresEntity producto) {
 		return proveedoresRepository.save(producto);
 	}
-
-	public void delete(Integer id) {
-		proveedoresRepository.deleteById(id);
-	}
 	
+	public boolean actualizarProveedor(Integer id, ProveedoresEntity proveedor) {
+        Optional<ProveedoresEntity> proveedorExistente = proveedoresRepository.findById(id);
+        if (proveedorExistente.isPresent()) {
+            ProveedoresEntity proveedorActualizado = proveedorExistente.get();
+            proveedorActualizado.setEmpresa(proveedor.getEmpresa());
+            proveedorActualizado.setEmailProveedor(proveedor.getEmailProveedor());
+            proveedorActualizado.setDireccionProveedor(proveedor.getDireccionProveedor());
+            proveedorActualizado.setNombreProveedor(proveedor.getNombreProveedor());
+            proveedorActualizado.setTelefonoProveedor(proveedor.getTelefonoProveedor());
+            proveedorActualizado.setDescripcionProveedor(proveedor.getDescripcionProveedor());
+            proveedoresRepository.save(proveedorActualizado);
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	public void eliminarProveedor(Integer idProveedor) {
+		proveedoresRepository.deleteById(idProveedor);
+	}
 }

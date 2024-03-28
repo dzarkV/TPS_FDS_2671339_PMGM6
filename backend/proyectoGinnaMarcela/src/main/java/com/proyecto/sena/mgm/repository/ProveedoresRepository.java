@@ -15,4 +15,7 @@ public interface ProveedoresRepository extends JpaRepository<ProveedoresEntity, 
     @Query(value = "select * from proveedores where empresa like %:empresa%", 
 			nativeQuery = true)
 	List<ProveedoresEntity> findByEmpresa(@Param("empresa") String empresa);
+    
+    void deleteById(Integer idProveedor);
+    
 }

@@ -20,6 +20,7 @@ public interface Productosrepository extends JpaRepository<ProductosEntity, Inte
 			nativeQuery = true)
 	List<ProductosEntity> findByNombreProductoAndIdProducto(@Param("nombre") String nombreProducto, @Param("id") Integer idProducto);
 
+	void deleteById(Integer idProducto);
 }
 
 

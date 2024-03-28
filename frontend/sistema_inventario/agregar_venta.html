@@ -22,12 +22,18 @@
 
 <body>
 	<ul class="nav nav-tabs" role="tablist" style="background-color: #5F818C;">
-		<li class="active"><a href="index.html">Home</a></li>
+		<li><a  style="color: black;" href="index.html">Home</a></li>
 		<li><a style="color: black;" href="Productos.html">Productos</a></li>
+<<<<<<< HEAD
+		<li><a style="color: black;" href="proveedores.html">Proveedores</a></li>
+		<li class="active"><a style="color: black;" href="ventas.html">Ventas</a></li>
+		<li><a style="color: black;" href="reportes.html">Reportes</a></li>
+=======
 			<li><a style="color: black;" href="proveedores.html">Proveedores</a></li>
 			<li><a style="color: black;" href="ventas.html">Ventas</a></li>
 			<li><a style="color: black;" href="reportes.html">Reportes</a></li>
 			<li><a style="color: black;" href="inventario.html">Inventario</a></li>
+>>>>>>> 85c5be4850627127af0537cc7f8791563d894015
 	</ul>
 	<!-- Cabezote de la pagina Estados de usuario -->
 	<header id="estilo-header">
@@ -77,35 +83,40 @@
 	<!-- Seccion con los formularios con la informacion para crear un nuevo usuario -->
 	<form id="crearVentasForm" method="post">
 		<section id="estilo-contact">
-		    <div class="container">
-			   <div class="row row-bottom-padded-md">
-				  <div class="col-md-12">
-					 <h3 style="margin-top: 50px; margin-bottom: 50px;">Agregar Venta</h3>
-					 <div class="form-group">
-						<input type="number" class="form-control" id="idStock" placeholder="Id del Stock" name="idStock">
-					 </div>
-					 <div class="form-group">
-						<input type="date" class="form-control" id="fechaVenta" placeholder="Fecha de la Venta" name="fechaVenta">
-					 </div>
-	 
-					 <div class="form-group">
-						<input type="number" class="form-control" id="cantidadItems" placeholder="cantidad de items" name="cantidadItems">
-					 </div>
-	 
-					 <div class="form-group">
-						<input type="number" class="form-control" id="valorTotal" placeholder="Valor Total" name="valorTotal">
-					 </div>
-	 
-					 <div class="form-group">
-						<button class="btn btn-primary btn-lg" type="button" onclick="agregarVenta()">Agregar Venta</button>
-					 </div>
-				  </div>
-			   </div>
-		    </div>
-		</section>
-	 </form>
+			<div class="container">
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-12">
+						<h3 style="margin-top: 50px; margin-bottom: 50px;">Agregar Venta</h3>
+						<div class="form-group">
+							<input type="number" class="form-control" id="idStock" placeholder="Id del Stock"
+								name="idStock">
+						</div>
+						<div class="form-group">
+							<input type="date" class="form-control" id="fechaVenta"
+								placeholder="Fecha de la Venta" name="fechaVenta">
+						</div>
 
-	<script src="js/service-ventas.js"></script> 
+						<div class="form-group">
+							<input type="number" class="form-control" id="cantidadItems"
+								placeholder="cantidad de items" name="cantidadItems">
+						</div>
+
+						<div class="form-group">
+							<input type="number" class="form-control" id="valorTotal" placeholder="Valor Total"
+								name="valorTotal">
+						</div>
+
+						<div class="form-group">
+							<button class="btn btn-primary btn-lg" type="button" onclick="agregarVenta()">Agregar
+								Venta</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</form>
+
+	<script src="js/service-ventas.js"></script>
 	<script src="js/script.js"></script>
 
 </body>

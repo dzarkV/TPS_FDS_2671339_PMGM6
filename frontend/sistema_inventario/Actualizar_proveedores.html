@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Sistema de inventario MGM</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sistema de inventario MGM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet'
+		type='text/css'>
+
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 
@@ -17,49 +19,59 @@
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
 	<ul class="nav nav-tabs" role="tablist" style="background-color: #5F818C;">
-		<li class="active"><a href="index.html">Home</a></li>
+		<li><a style="color: black;" href="index.html">Home</a></li>
 		<li><a style="color: black;" href="Productos.html">Productos</a></li>
+<<<<<<< HEAD
+		<li class="active"><a style="color: black;" href="proveedores.html">Proveedores</a></li>
+		<li><a style="color: black;" href="ventas.html">Ventas</a></li>
+		<li><a style="color: black;" href="reportes.html">Reportes</a></li>
+=======
 			<li><a style="color: black;" href="proveedores.html">Proveedores</a></li>
 			<li><a style="color: black;" href="ventas.html">Ventas</a></li>
 			<li><a style="color: black;" href="reportes.html">Reportes</a></li>
 			<li><a style="color: black;" href="inventario.html">Inventario</a></li>
+>>>>>>> 85c5be4850627127af0537cc7f8791563d894015
 	</ul>
 	<!-- Cabezote de la pagina Estados de usuario -->
 	<header id="estilo-header">
 		<div class="container">
 			<nav class="navbar navbar-default" style="margin-top: 50px;">
 				<div class="navbar-header">
-					<a href="#" class="js-estilo-nav-toggle estilo-nav-toggle" ><i></i></a>
-					<a class="navbar-brand" href="index.html">MGM</a> 
+					<a href="#" class="js-estilo-nav-toggle estilo-nav-toggle"><i></i></a>
+					<a class="navbar-brand" href="index.html">MGM</a>
 				</div>
 				<!-- Menu de seleccion -->
 				<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li style="margin: 0px 16px">
-						<select class="form-select form-select-lg mb-3" id="funcionUsuario" onchange="navegar()">
-							<option selected> Ajustes usuario</option>
-							<option value="1">actualizar usuario</option>
-							<option value="2">consultar usuario</option>
-							<option value="3">estado de usuario</option>
-							<option value="4">eliminar usuario</option>
-							<option value="5">crear usuario</option>
-						</select>
-					</li>
-					<li style="color:#fff">
-						<span  id="nombreUsuario">x</span><br>
-						<span id="rolUsuario">x</span><br>
-						<button id="btn-logout" class="btn btn-primary" onclick="logout()">Cerrar sesión</button>					
-					</li>
-				</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li style="margin: 0px 16px">
+							<select class="form-select form-select-lg mb-3" id="funcionUsuario"
+								onchange="navegar()">
+								<option selected> Ajustes usuario</option>
+								<option value="1">actualizar usuario</option>
+								<option value="2">consultar usuario</option>
+								<option value="3">estado de usuario</option>
+								<option value="4">eliminar usuario</option>
+								<option value="5">crear usuario</option>
+							</select>
+						</li>
+						<li style="color:#fff">
+							<span id="nombreUsuario">x</span><br>
+							<span id="rolUsuario">x</span><br>
+							<button id="btn-logout" class="btn btn-primary" onclick="logout()">Cerrar
+								sesión</button>
+						</li>
+					</ul>
 				</div>
 			</nav>
 		</div>
 	</header>
 
 	<!-- Imagen de fondo de pantalla y con filtro azul -->
-	<section id="estilo-home" style="background-image: url(images/fondo_papeleria.jpg); height: 200px;" data-stellar-background-ratio="0.5">
+	<section id="estilo-home" style="background-image: url(images/fondo_papeleria.jpg); height: 200px;"
+		data-stellar-background-ratio="0.5">
 		<div class="gradient"></div>
 		<div class="container">
 			<div class="text-wrap">
@@ -69,7 +81,7 @@
 	</section>
 
 	<!-- Seccion con los formularios con la informacion para crear un nuevo usuario -->
-	<section id="estilo-contact" >
+	<section id="estilo-contact">
 		<div class="container">
 			<div class="row row-bottom-padded-md">
 				<div class="col-md-12">
@@ -88,22 +100,24 @@
 					</div>
 					<div class="form-group ">
 						<label for="confirnpass" class="sr-only">descripción </label>
-						<input id="confirnpass" class="form-control" placeholder="descripción del productos que provee" type="text">
+						<input id="confirnpass" class="form-control"
+							placeholder="descripción del productos que provee" type="text">
 					</div>
 					<div class="form-group ">
 						<input class="btn btn-primary btn-lg" value="Actualizar" type="submit">
 						<input class="btn btn-primary btn-lg-cancel" value="cancelar" type="submit">
-				
-					</div>
-					
-					</div>
-				</div>
 
+					</div>
+
+				</div>
 			</div>
+
+		</div>
 		</div>
 	</section>
 
-			<script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 
-	</body>
+</body>
+
 </html>

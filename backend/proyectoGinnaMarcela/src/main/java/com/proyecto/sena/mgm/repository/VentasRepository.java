@@ -21,6 +21,8 @@ public interface VentasRepository extends JpaRepository<VentasEntity, Integer>{
 	
 	List<VentasEntity> findByFechaVentaBetween(LocalDate startDate, LocalDate endDate);
 	
+	void deleteById(Integer idVenta);
+	
 //	@Query(value = "select * from ventas where nombre_producto like %:nombre% and id_producto = :id", 
 //			nativeQuery = true)
 //	List<VentasEntity> findByNombreProductoAndIdProducto(@Param("nombre") String nombreProducto, @Param("id") Integer idProducto);

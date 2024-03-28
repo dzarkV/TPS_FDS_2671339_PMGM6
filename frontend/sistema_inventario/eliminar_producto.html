@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,20 +25,13 @@
 
 </head>
 
-<body onload="listarProveedor()">
+<body onload="listarProductosEliminar()">
 	<ul class="nav nav-tabs" role="tablist" style="background-color: #5F818C;">
 		<li><a style="color: black;" href="index.html">Home</a></li>
-		<li><a style="color: black;" href="Productos.html">Productos</a></li>
-<<<<<<< HEAD
-		<li class="active"><a style="color: black;" href="proveedores.html">Proveedores</a></li>
+		<li class="active"><a style="color: black;" href="Productos.html">Productos</a></li>
+		<li><a style="color: black;" href="proveedores.html">Proveedores</a></li>
 		<li><a style="color: black;" href="ventas.html">Ventas</a></li>
 		<li><a style="color: black;" href="reportes.html">Reportes</a></li>
-=======
-			<li><a style="color: black;" href="proveedores.html">Proveedores</a></li>
-			<li><a style="color: black;" href="ventas.html">Ventas</a></li>
-			<li><a style="color: black;" href="reportes.html">Reportes</a></li>
-			<li><a style="color: black;" href="inventario.html">Inventario</a></li>
->>>>>>> 85c5be4850627127af0537cc7f8791563d894015
 	</ul>
 	<!-- Cabezote de la pagina Estados de usuario -->
 	<header id="estilo-header">
@@ -87,42 +78,52 @@
 		<div class="slant"></div>
 	</section>
 
+<section class="container">
+		<!-- Para realizar los filtros -->
+		<form id="producto-form" method="get">
+			<div class="row" style="margin-top: 2em; margin-bottom: 2rem;">
+				<p class="col-lg-6">
+					Buscar nombre de producto:
+					<input type="text" name="busquedaProducto" placeholder="Buscar">
+					<button type="button" onclick="buscarProducto()">Buscar</button>
+					<!-- al dar click va al metodo indicado -->
+				</p>
+				<p  class="col-lg-6">
+					Buscar producto ID:
+					<input type="text" name="busquedaID" placeholder="0000">
+					<button type="button" onclick="buscarProducto()">Buscar</button>
+				</p>
+			</div>
+		</form>
+	
+		<section id="estilo-contact">
+			<div class="container">
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-12">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Codigo</th>
+									<th scope="col">Producto</th>
+									<th scope="col">Precio</th>
+									<th scope="col">Descripcion</th>
+									<th scope="col">Acción</th>
+								</tr>
+							</thead>
+							<tbody id="data">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+	
+</section>
 
-	<!-- Para realizar los filtros -->
-	<form id="proveedor-form" method="get">
-
-		Buscar proveedor:
-		<input type="text" name="busquedaproveedor" placeholder="Buscar">
-		<button type="button" onclick="buscarProveedor()">Buscar</button>
-		<!-- al dar click va al metodo indicado  -->
-
-	</form>
-
-	<!-- HTML que pinta las tablas (comienzo) -->
-
-	<section id="estilo-contact">
-		<div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>Nombre</th>
-						<th>direccion</th>
-						<th>telefono</th>
-						<th>descripcion</th>
-						<th>empresa</th>
-						<th>email</th>
-						</th>
-					</tr>
-				</thead>
-				<tbody id="data">
-				</tbody>
-			</table>
-		</div>
-	</section>
-
-	<script src="js/service-proveedores.js"></script>
+	<script src="js/service-producto.js"></script> <!-- Script con la consulta a BD -->
 	<script src="js/script.js"></script>
+
 </body>
 
 </html>

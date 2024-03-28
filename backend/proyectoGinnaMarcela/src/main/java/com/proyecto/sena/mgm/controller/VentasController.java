@@ -8,15 +8,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.sena.mgm.entity.ProductosEntity;
+import com.proyecto.sena.mgm.entity.ProveedoresEntity;
 import com.proyecto.sena.mgm.entity.VentasEntity;
 import com.proyecto.sena.mgm.repository.VentasRepository;
 import com.proyecto.sena.mgm.service.ProductoService;
@@ -68,17 +72,22 @@ public class VentasController {
         int totalVentasMes = ventasService.getTotalVentaMes(fecha);
         return ResponseEntity.ok(totalVentasMes);
     }
-	
-//	@PostMapping("/reporte")
-//    public Integer reporteVentaDiaria(@RequestBody VentasEntity venta){
-//        return new ResponseEntity<>(ventasService.save(venta), HttpStatus.OK);
-//    }
-	
-//	
-//	@GetMapping("/buscar")
-//    public ResponseEntity<List<VentasEntity>> buscarProducto(@RequestParam(required = false) Integer idProducto, @RequestParam(required = false) String nombreProducto){
-//        return new ResponseEntity<>(VentasService.buscarVenta(idProducto, nombreProducto), HttpStatus.OK);
-//    }
-	
+    
+    @DeleteMapping("/listado/{id}")
+    public void eliminarVentas(@PathVariable("id") Integer IdVenta) {
+    	ventasService.eliminarVenta(IdVenta);
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> actualizarVentas(@PathVariable Integer id, @RequestBody VentasEntity venta) {
+    	boolean actualizado = ventasService.actualizarVenta(id, venta);
+    	if (actualizado) {
+    		return new ResponseEntity<>("venta actualizada correctamente", HttpStatus.OK);
+    	} else {
+    		return new ResponseEntity<>("No se pudo actualizar la venta", HttpStatus.NOT_FOUND);
+    	}
+    }
+    
+	
 }
+

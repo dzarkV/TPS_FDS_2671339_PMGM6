@@ -1,8 +1,6 @@
 function listarVentas() {
 
   var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/ventas/listado";
-  //  var url = "http://localhost:8050/api/ventas/listado";
-
 
   // Consumir el endpoint o la url de java
   fetch(url)
@@ -16,7 +14,14 @@ function listarVentas() {
     console.log(data)
     let body = ""
     for (var i = 0; i < data.length; i++) {
-      body += `<tr><td>${data[i].idVenta}</td><td>${data[i].fechaVenta}</td><td>${data[i].cantidadItemsVentaXProducto}</td><td>${data[i].valorTotalVenta}</td></tr>`
+      body += `<tr>
+      <td>${data[i].idVenta}</td>
+      <td>${data[i].fechaVenta}</td>
+      <td>${data[i].cantidadItemsVentaXProducto}</td>
+      <td>${data[i].valorTotalVenta}</td>
+      <td><button class="btn btn-info" data-id="${data[i].idVenta}" onclick="formularioActualizarVenta(${data[i].idVenta})">Actualizar</button></td>
+      <td><button class="btn btn-danger" data-id="${data[i].idVenta}" onclick="eliminarVenta(${data[i].idVenta})">Eliminar</button></td>
+      </tr>`
     }
     document.getElementById('data').innerHTML = body
     //console.log(body)
@@ -75,7 +80,7 @@ function agregarVenta() {
     fechaVenta: valorFechaVenta,
     cantidadItemsVentaXProducto: valorCantidadItems,
     valorTotalVenta: valorValorTotal,
-  }
+  };
 
   console.log("data a enviar", dataVenta)
 
@@ -101,6 +106,7 @@ function agregarVenta() {
     })
     .then(data => {
       alert('Se ha guardado la venta : ' + data.idVenta);
+      window.location.href = 'ventas.html';
     })
     .catch(error => {
       alert('Hubo un error: ' + error.message);
@@ -136,4 +142,71 @@ function getTotalVentasMes() {
     .then(data => {
       document.getElementById("resultadoMes").innerHTML = "Total de ventas para el mes: " + data;
     });
+}
+
+function eliminarVenta(idVenta) {
+
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/ventas/listado/";
+
+  fetch(url + idVenta, {
+    method: "DELETE"
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Venta ha sido eliminada satisfactoriamente");
+        location.reload();
+      } else {
+        alert("Error: La venta no ha podido ser eliminada")
+      }
+    })
+    .catch((error) => {
+      console.error('Error al eliminar la venta', error);
+      alert("ha ocurrido un error")
+    })
+
+}
+
+
+function actualizarVenta() {
+
+  var url = "https://sistema-mgm-service-app-for-inventary.azurewebsites.net/api/ventas/";
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const idVenta = urlParams.get('id');
+
+  var valorIdStock = document.getElementById('idStock').value;
+  var valorFechaVenta = document.getElementById('fechaVenta').value;
+  var valorCantidadItems = document.getElementById('cantidadItems').value;
+  var valorValorTotal = document.getElementById('valorTotal').value;
+
+  const dataVenta = {
+    idStock: valorIdStock,
+    fechaVenta: valorFechaVenta,
+    cantidadItemsVentaXProducto: valorCantidadItems,
+    valorTotalVenta: valorValorTotal,
+  };
+
+  fetch(url + idVenta, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dataVenta)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al actualizar la venta');
+      }
+      alert('Venta actualizada con exito');
+
+      window.location.href = 'ventas.html';
+    })
+    .catch(error => {
+      alert('Error al actualizar la venta: ' + error.message);
+    });
+}
+
+function formularioActualizarVenta(idVenta) {
+  window.open('actualizar_venta_formulario.html?id=' + idVenta, '_blank');
 }

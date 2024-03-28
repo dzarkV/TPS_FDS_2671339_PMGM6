@@ -53,6 +53,9 @@ function loginUsuario() {
 
   // obtener referencia al formulario
   const form = document.querySelector("#login-form");
+
+
+
   // agregar un gestor de eventos para enviar el formulario
   form.addEventListener("submit", async (event) => {
     // detener el comportamiento predeterminado del formulario (que es recargar la página)
@@ -70,8 +73,14 @@ function loginUsuario() {
     // procesar la respuesta del servidor
     const dataAuth = await responseAuth.json();
 
+    
     // si el usuario está autenticado con token, guardar en localStorage y redirigir al usuario a la página de inicio
     if (dataAuth.access_token) {
+      
+      // // mostrando overlay y cargando loader
+      // document.getElementById("overlay").style.display = "block";
+      // document.getElementById("loader").style.display = "block";
+
       // guardar el token en el almacenamiento local
       window.localStorage.setItem("jwt", dataAuth.access_token);
 
@@ -110,10 +119,12 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   if (location.pathname.endsWith("Actualizar_Usuario.html")) {
-        // carga datos del usuario sesion en el formulario
-        document.getElementsByName('nombre')[0].value = JSON.parse(localStorage.getItem("userSession")).nombre_usuario;
-        document.getElementsByName('apellido')[0].value = JSON.parse(localStorage.getItem("userSession")).apellido_usuario;
-        document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem("userSession")).credenciales.usuario;
-        document.getElementsByName('rol')[0].value = JSON.parse(localStorage.getItem("userSession")).rol_usuario.nombre_rol;
+    // carga datos del usuario sesion en el formulario
+    document.getElementsByName('nombre')[0].value = JSON.parse(localStorage.getItem("userSession")).nombre_usuario;
+    document.getElementsByName('apellido')[0].value = JSON.parse(localStorage.getItem("userSession")).apellido_usuario;
+    document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem("userSession")).credenciales.usuario;
+    document.getElementsByName('rol')[0].value = JSON.parse(localStorage.getItem("userSession")).rol_usuario.nombre_rol;
   }
 });
+
+

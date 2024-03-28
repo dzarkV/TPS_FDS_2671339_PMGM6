@@ -3,6 +3,7 @@ package com.proyecto.sena.mgm.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.proyecto.sena.mgm.entity.ProveedoresEntity;
 import com.proyecto.sena.mgm.entity.VentasEntity;
 
 public interface VentasService {
@@ -18,6 +19,12 @@ public interface VentasService {
 	int getTotalVentaSemana(LocalDate fecha);
 	
 	int getTotalVentaMes(LocalDate fecha);
+	
+	void eliminarVenta(Integer idVenta);
+	
+	boolean actualizarVenta(Integer id, VentasEntity venta);
+	
+
 	
 	
 	

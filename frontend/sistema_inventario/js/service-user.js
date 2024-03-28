@@ -1,4 +1,5 @@
 
+
 function crearUsuario() {
   // Capturar los datos del formulario
   var valorNombre = document.forms["crearUsuarioForm"]["nombre"].value;

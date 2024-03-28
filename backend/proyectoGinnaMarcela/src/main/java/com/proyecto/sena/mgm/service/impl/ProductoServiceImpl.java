@@ -2,6 +2,7 @@ package com.proyecto.sena.mgm.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,9 +45,24 @@ public class ProductoServiceImpl implements ProductoService {
 	public ProductosEntity save(ProductosEntity producto) {
 		return productosrepository.save(producto);
 	}
+	
+	public boolean actualizarProducto(Integer id, ProductosEntity producto) {
+        Optional<ProductosEntity> productoExistente = productosrepository.findById(id);
+        if (productoExistente.isPresent()) {
+            ProductosEntity productoActualizado = productoExistente.get();
+            productoActualizado.setNombreProducto(producto.getNombreProducto());
+            productoActualizado.setPrecioProducto(producto.getPrecioProducto());
+            productoActualizado.setDescripcionProducto(producto.getDescripcionProducto());
+            productoActualizado.setMarca(producto.getMarca());
+            productoActualizado.setReferencia(producto.getReferencia());
+            productosrepository.save(productoActualizado);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public void delete(Integer id) {
-		 productosrepository.deleteById(id);
-	}
-
+	public void eliminarProducto(Integer idProducto) {
+        productosrepository.deleteById(idProducto);
+    }
 }

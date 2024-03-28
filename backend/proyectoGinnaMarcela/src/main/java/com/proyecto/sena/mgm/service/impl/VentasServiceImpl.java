@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.proyecto.sena.mgm.entity.ProductosEntity;
+import com.proyecto.sena.mgm.entity.ProveedoresEntity;
 import com.proyecto.sena.mgm.entity.VentasEntity;
 import com.proyecto.sena.mgm.repository.Productosrepository;
 import com.proyecto.sena.mgm.repository.VentasRepository;
@@ -52,9 +53,24 @@ public class VentasServiceImpl implements VentasService {
 	    return ventasDelMes.stream().mapToInt(VentasEntity::getValorTotalVenta).sum();
 	}
 	
-//	public VentasEntity findByFechaVenta(String fechaVenta) {
-//	return ventasRepository.findByFechaVenta(fechaVenta).orElse(null);
-//}	
+	public boolean actualizarVenta(Integer id, VentasEntity venta) {
+        Optional<VentasEntity> ventaExistente = ventasRepository.findById(id);
+        if (ventaExistente.isPresent()) {
+        	VentasEntity ventaActualizado = ventaExistente.get();
+            ventaActualizado.setIdStock(venta.getIdStock());
+            ventaActualizado.setFechaVenta(venta.getFechaVenta());
+            ventaActualizado.setCantidadItemsVentaXProducto(venta.getCantidadItemsVentaXProducto());
+            ventaActualizado.setValorTotalVenta(venta.getValorTotalVenta());
+            ventasRepository.save(ventaActualizado);
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	public void eliminarVenta(Integer idventa) {
+		ventasRepository.deleteById(idventa);
+	}
 	
 	public VentasEntity save(VentasEntity venta) {
 		return ventasRepository.save(venta);

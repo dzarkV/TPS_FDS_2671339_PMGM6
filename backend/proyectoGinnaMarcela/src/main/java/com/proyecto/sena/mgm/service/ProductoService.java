@@ -12,6 +12,10 @@ public interface ProductoService {
 	
 	public ProductosEntity save(ProductosEntity producto);
 	
+	void eliminarProducto(Integer idProducto);
+	
+	boolean actualizarProducto(Integer id, ProductosEntity producto);
+	
 	public List<ProductosEntity> buscarProducto(Integer idProducto, String nombreProducto);
 	
 }
